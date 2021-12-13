@@ -31,12 +31,12 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 	
-	/*@ExceptionHandler(AdminNotFoundException.class)
+	@ExceptionHandler(AdminNotFoundException.class)
 	public ResponseEntity<?> adminNotFoundException(AdminNotFoundException ae, WebRequest request) {
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ae.getMessage(),
 				request.getDescription(false));
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
-	}*/
+	}
 	
 	@ExceptionHandler(CustomerNotFoundException.class)
 	public ResponseEntity<?> customerNotFoundException(CustomerNotFoundException ce, WebRequest request) {
@@ -45,12 +45,12 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 
-	/*@ExceptionHandler(SurrenderCylinderNotFoundException.class)
+	@ExceptionHandler(SurrenderCylinderNotFoundException.class)
 	public ResponseEntity<?> surrenderCylinderNotFound(SurrenderCylinderNotFoundException se, WebRequest request) {
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), se.getMessage(),
 				request.getDescription(false));
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
-	}*/
+	}
 	
 	@ExceptionHandler(BankNotFoundException.class)
 	public ResponseEntity<?> bankNotFoundException(BankNotFoundException be, WebRequest request) {

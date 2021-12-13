@@ -11,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "gas_booking")
@@ -30,21 +33,18 @@ public class GasBooking implements Serializable{
 		@Column(name = "gas_booking_id")
 		private int gasBookingId;
 		
-		@Future(message="LocalDate should be future date")
-		@Column(name = "local_date")
-		private LocalDate localDate;
+		private LocalDate localDate=LocalDate.now();
 		
-		@NotNull
-		@Column(name = "status")
-		private boolean status;
+		private String status;
 		
-		@DecimalMin(value = "900.0")
+	
 		@Column(name = "bill")
 		private double bill;
 		
 		@ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY)
 		@JoinColumn(name = "customer_id", nullable = false)
-		@JsonBackReference("4")
+		//@JsonBackReference("4")
+		//@JsonIgnore
 		private Customer customer;
 		
 		//constructors
@@ -53,7 +53,7 @@ public class GasBooking implements Serializable{
 			super();
 		}
 		
-		public GasBooking(int gasBookingId, LocalDate localDate, boolean status, double bill) {
+		public GasBooking(int gasBookingId, LocalDate localDate, String status, double bill) {
 			super();
 			this.gasBookingId = gasBookingId;
 			this.localDate = localDate;
@@ -79,11 +79,11 @@ public class GasBooking implements Serializable{
 			this.localDate = localDate;
 		}
 		
-		public boolean getStatus() {
+		public String getStatus() {
 			return status;
 		}
 		
-		public void setStatus(boolean status) {
+		public void setStatus(String status) {
 			this.status = status;
 		}
 		
