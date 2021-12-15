@@ -11,14 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "gas_booking")
@@ -45,6 +38,7 @@ public class GasBooking implements Serializable{
 		@JoinColumn(name = "customer_id", nullable = false)
 		//@JsonBackReference("4")
 		//@JsonIgnore
+		@JsonBackReference("4")
 		private Customer customer;
 		
 		//constructors

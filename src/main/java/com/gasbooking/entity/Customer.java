@@ -14,7 +14,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -50,8 +49,8 @@ public class Customer extends AbstractUser implements Serializable{
 		@JoinColumn(name = "bank_id")
 		private Bank bank;
 		
-		//@JsonManagedReference("4")
-		@JsonIgnore
+		@JsonManagedReference("4")
+		//@JsonIgnore
 		@OneToMany(targetEntity = GasBooking.class, cascade = CascadeType.ALL, mappedBy = "customer")
 		private List<GasBooking> gasBooking = new ArrayList<>();
 

@@ -1,5 +1,4 @@
 package com.gasbooking.controller;
-import java.util.InputMismatchException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gasbooking.dto.BookingDto;
-import com.gasbooking.entity.Customer;
 import com.gasbooking.entity.GasBooking;
-import com.gasbooking.exception.CustomerNotFoundException;
 import com.gasbooking.exception.GasBookingNotFoundException;
 import com.gasbooking.service.IGasBookingService;
 @RestController

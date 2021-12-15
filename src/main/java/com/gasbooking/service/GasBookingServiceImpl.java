@@ -31,7 +31,7 @@ public class GasBookingServiceImpl implements IGasBookingService{
 		logger.info(""+customer);
 		GasBooking gasBooking1=new GasBooking();
 		gasBooking1.setCustomer(customer);
-		gasBooking1.setBill(950.0);
+		gasBooking1.setBill(gasBooking.getBill());
 		gasBooking1.setStatus("booked");
 		gasBooking1.setLocalDate(LocalDate.now());
 		logger.info("********Inserting GasBooking Details*********");
@@ -43,13 +43,13 @@ public class GasBookingServiceImpl implements IGasBookingService{
 		
 		logger.info("********Updating GasBooking Details*********");
 		Customer customer = customerRepo.findById(gasBooking.getCustomerId()).get();
-		GasBooking gasBooking1=new GasBooking();
+		//GasBooking gasBooking1=new GasBooking();
 		Optional<GasBooking> optional = gasBookingRepo.findById(gasBookingId);
 		if(optional.isPresent()) {
 			GasBooking g1=optional.get();
 			g1.setCustomer(customer);
 			g1.setLocalDate(LocalDate.now());
-			//g1.setStatus(gasBooking.getStatus());
+			g1.setStatus(gasBooking.getStatus());
 			g1.setBill(gasBooking.getBill());
 			GasBooking updatedGasBooking=gasBookingRepo.save(g1);
 			return updatedGasBooking;
